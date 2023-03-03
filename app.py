@@ -15,12 +15,12 @@ app = Flask(__name__)
 
 
 def generate_explanation(control_conversion_rate, variation_conversion_rate, relative_improvement, significance_level):
-    prompt = f"Control Conversion Rate: {control_conversion_rate}%. Variation Conversion Rate: {variation_conversion_rate}%. Relative Improvement: {relative_improvement}%. Significance Level: {significance_level}."
+    prompt = f" Explain in simple terms the A/B test results based on: Control Conversion Rate: {control_conversion_rate}%. Variation Conversion Rate: {variation_conversion_rate}%. Relative Improvement: {relative_improvement}%. Significance Level: {significance_level}."
     response = openai.Completion.create(
         engine=model_engine,
         prompt=prompt,
         temperature=0.5,
-        max_tokens=60,
+        max_tokens=150,
         top_p=1,
         frequency_penalty=0,
         presence_penalty=0

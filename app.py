@@ -20,7 +20,7 @@ def generate_explanation(control_conversion_rate, variation_conversion_rate, rel
         engine=model_engine,
         prompt=prompt,
         temperature=0.5,
-        max_tokens=150,
+        max_tokens=130,
         top_p=1,
         frequency_penalty=0,
         presence_penalty=0

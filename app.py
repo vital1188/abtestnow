@@ -8,7 +8,7 @@ import math
 
 load_dotenv()
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+openai.api_key = os.environ['OPENAI_API_KEY']
 model_engine = "text-davinci-003"
 
 app = Flask(__name__)

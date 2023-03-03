@@ -2,3 +2,4 @@ flask
 statsmodels
 gunicorn
 openai
+python-dotenv

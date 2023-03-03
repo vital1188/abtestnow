@@ -19,8 +19,8 @@ def generate_explanation(control_conversion_rate, variation_conversion_rate, rel
     response = openai.Completion.create(
         engine=model_engine,
         prompt=prompt,
-        temperature=0.5,
-        max_tokens=130,
+        temperature=0.4,
+        max_tokens=120,
         top_p=1,
         frequency_penalty=0,
         presence_penalty=0

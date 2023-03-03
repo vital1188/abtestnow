@@ -47,9 +47,16 @@
   </div>
 
   <div class="col-sm-12">
-    <button type="submit" class="btn btn-primary btn-block">Calculate</button>
+    <button type="submit" id="submit-btn" class="btn btn-primary btn-block">Calculate</button>
+
   </div>
 </form>
+
+<div id="loading" style="display:none;">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
 
 {% if control_conversion_rate is defined and variation_conversion_rate is defined %}
 <div class="mt-5">
@@ -63,7 +70,7 @@
     <div class="col-sm-6">
       <p>Relative Improvement: {{ relative_improvement }}%</p>
       <!--<p> P-value: {{ p_value }}</p> --> 
-      <p>Statistical Significance: {{ significance_level }}</p>
+      <p>Statistical Significance: {{ significance_level }}%</p>
     </div>
   </div>
 
@@ -87,10 +94,21 @@
 
 </div>
 {% endif %}
-
   </div>
 
-  <footer class="mt-5">
-    <p>&copy; 2023 <a href="https://www.buysafe.com"> A/B Test Calculator</a></p>
-  </footer>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#submit-btn').click(function() {
+      $('#loading').show(); // show the loading element
+    });
+  });
+</script>
+
+
 </body>
+
+<footer class="mt-5">
+    <p>&copy; 2023 <a href="https://www.buysafe.com"> A/B Test Calculator</a></p>
+</footer>
+</html>

@@ -13,3 +13,12 @@ h1 {
     text-align: center;
     margin: 20px 0 20px 0;
 }
+
+#loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 7vh;
+    
+}
+

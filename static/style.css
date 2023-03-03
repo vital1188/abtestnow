@@ -1,0 +1,15 @@
+
+.progress {
+    margin-top: 1rem;
+}
+
+.progress-bar {
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin: 20px 0 20px 0;
+}

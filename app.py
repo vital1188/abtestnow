@@ -1,3 +1,4 @@
+from scipy.stats import norm
 import openai
 import os
 from dotenv import load_dotenv
@@ -15,7 +16,7 @@ app = Flask(__name__)
 
 
 def generate_explanation(control_conversion_rate, variation_conversion_rate, relative_improvement, significance_level):
-    prompt = f"An A/B test was conducted on an ecommerce store to test the effectiveness of the Shopping Guarantee program. 50 % of users were randomly assigned to the control group and did not experience the Shopping Guarantee, while the other 50 % were assigned to the variation group and did experience the Shopping Guarantee. The results of the A/B test are as follows: Control Conversion Rate: {control_conversion_rate} % . Variation Conversion Rate: {variation_conversion_rate} % . Relative Improvement: {relative_improvement} % . Significance Level: {significance_level} % ."
+    prompt = f"An A/B test was conducted on an ecommerce store to test the effectiveness of the Shopping Guarantee program. 50 % of users were randomly assigned to the control group and did not experience the Shopping Guarantee, while the other 50 % were assigned to the variation group and did experience the Shopping Guarantee. The results of the A/B test are as follows: Control Conversion Rate: {control_conversion_rate} % . Variation Conversion Rate: {variation_conversion_rate} % . Relative Improvement: {relative_improvement} % . Significance Level: {round( significance_level * 100, 2)}% ."
     response = openai.Completion.create(
         engine=model_engine,
         prompt=prompt,
@@ -43,17 +44,18 @@ def calculate():
         variation_conversion_rate = round(
             variation_conversions / variation_visitors * 100, 2)
 
-        count = [control_conversions, variation_conversions]
-        nobs = [control_visitors, variation_visitors]
-        z_stat, p_value = proportions_ztest(count=count, nobs=nobs)
+        control_std_error = math.sqrt(
+            control_conversion_rate * (100 - control_conversion_rate) / control_visitors)
+        variation_std_error = math.sqrt(
+            variation_conversion_rate * (100 - variation_conversion_rate) / variation_visitors)
+
+        z_score = (variation_conversion_rate - control_conversion_rate) / \
+            math.sqrt(control_std_error**2 + variation_std_error**2)
+
+        significance_level = norm.cdf(z_score)
 
         relative_improvement = round(
             (variation_conversion_rate - control_conversion_rate) / control_conversion_rate * 100, 2)
-
-        if p_value < 0.08:
-            significance_level = round((1- p_value) * 100, 2)
-        else:
-            significance_level = 'not significant (p >= 0.08)'
 
         openai_explanation = generate_explanation(
             control_conversion_rate, variation_conversion_rate, relative_improvement, significance_level)
@@ -62,8 +64,8 @@ def calculate():
                                control_conversion_rate=control_conversion_rate,
                                variation_conversion_rate=variation_conversion_rate,
                                relative_improvement=relative_improvement,
-                               p_value=p_value,
-                               significance_level=significance_level,
+                               significance_level=round(
+                                   significance_level * 100, 2),
                                control_visitors_input=control_visitors,
                                control_conversions_input=control_conversions,
                                variation_visitors_input=variation_visitors,
@@ -76,6 +78,7 @@ def calculate():
                            control_conversions_input='',
                            variation_visitors_input='',
                            variation_conversions_input='')
+
 
 
 if __name__ == '__main__':

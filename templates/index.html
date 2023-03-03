@@ -51,32 +51,42 @@
   </div>
 </form>
 
-        {% if control_conversion_rate is defined and variation_conversion_rate is defined %}
-    <div class="mt-5">
-      <h2>Results</h2>
-      <div class="row">
-        <div class="col-sm-6">
-          <p>Control Conversion Rate: {{ control_conversion_rate }}%</p>
-          <p>Variation Conversion Rate: {{ variation_conversion_rate }}%</p>
-        </div>
+{% if control_conversion_rate is defined and variation_conversion_rate is defined %}
+<div class="mt-5">
+  <h2>Results</h2>
+  <div class="row">
+    <div class="col-sm-6">
+      <p>Control Conversion Rate: {{ control_conversion_rate }}%</p>
+      <p>Variation Conversion Rate: {{ variation_conversion_rate }}%</p>
+    </div>
 
-        <div class="col-sm-6">
-          <p>Relative Improvement: {{ relative_improvement }}%</p>
-          <p>P-value: {{ p_value }}</p>
-          <p>Statistical Significance: {{ significance_level }}</p>
-        </div>
-      </div>
+    <div class="col-sm-6">
+      <p>Relative Improvement: {{ relative_improvement }}%</p>
+      <p>P-value: {{ p_value }}</p>
+      <p>Statistical Significance: {{ significance_level }}</p>
+    </div>
+  </div>
 
-      <div class="row mt-3">
-        <div class="col-sm-12">
-          <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: {{ control_conversion_rate }}%" aria-valuenow="{{ control_conversion_rate }}" aria-valuemin="0" aria-valuemax="100">{{ control_conversion_rate }}%</div>
-            <div class="progress-bar bg-success" role="progressbar" style="width: {{ variation_conversion_rate }}%" aria-valuenow="{{ variation_conversion_rate }}" aria-valuemin="0" aria-valuemax="100">{{ variation_conversion_rate }}%</div>
-          </div>
-        </div>
+  <div class="row mt-3">
+    <div class="col-sm-12">
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: {{ control_conversion_rate }}%" aria-valuenow="{{ control_conversion_rate }}" aria-valuemin="0" aria-valuemax="100">{{ control_conversion_rate }}%</div>
+        <div class="progress-bar bg-success" role="progressbar" style="width: {{ variation_conversion_rate }}%" aria-valuenow="{{ variation_conversion_rate }}" aria-valuemin="0" aria-valuemax="100">{{ variation_conversion_rate }}%</div>
       </div>
     </div>
+  </div>
+
+  {% if openai_explanation is defined %}
+  <div class="row mt-3">
+    <div class="col-sm-12">
+      <h2>Explanation</h2>
+      <p>{{ openai_explanation }}</p>
+    </div>
+  </div>
   {% endif %}
+
+</div>
+{% endif %}
 
   </div>
 

@@ -87,10 +87,21 @@
   <div class="row mt-3">
     <div class="col-sm-12">
       <h2>Explanation</h2>
-      <p>{{ openai_explanation }}</p>
+      <p id="explanation-text"></p>
     </div>
   </div>
-  {% endif %}
+  <script>
+    const explanationText = document.getElementById("explanation-text");
+    const explanation = "{{ openai_explanation }}";
+    let i = 0;
+    setInterval(() => {
+      if (i < explanation.length) {
+        explanationText.innerHTML += explanation.charAt(i);
+        i++;
+      }
+    }, 50);
+  </script>
+{% endif %}
 
 </div>
 {% endif %}
@@ -105,9 +116,7 @@
   });
 </script>
 
-
 </body>
-
 <footer class="mt-5">
     <p>&copy; 2023 <a href="https://www.buysafe.com"> A/B Test Calculator</a></p>
 </footer>

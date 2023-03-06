@@ -68,7 +68,7 @@
 {% if control_conversion_rate is defined and variation_conversion_rate is defined %}
 <div class="mt-5">
   <h2>Results</h2>
-  <div id="results-section" class="mt-5">
+<div id="results" class="mt-5">
   <div class="row">
     <div class="col-sm-6 mb-3">
       <div class="card" style="background-color: #F5F5F5;">
@@ -134,9 +134,13 @@
 {% endif %}
 
 <script>
-  // Scroll down to the results section
-  window.location.href = "#results-section";
-</script>
+    // Scroll to the results section
+    const resultsSection = document.getElementById('results');
+    window.scrollTo({
+      top: resultsSection.offsetTop,
+      behavior: 'smooth'
+    });
+  </script>
 
 <script>
   var conversionChart = new Chart(document.getElementById('conversion-chart'), {

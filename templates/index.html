@@ -66,29 +66,30 @@
     <div class="col-sm-6 mb-3">
       <div class="card" style="background-color: #F5F5F5;">
         <div class="card-body">
-          <h5 class="card-title" style="color: #007bff;">Control</h5>
+          <h5 class="card-title" style="color: #00305e;">Control</h5>
           <p class="card-text">Conversion Rate: {{ control_conversion_rate }}%</p>
-        </div>
-      </div>
-    </div>
-    
- <div class="col-sm-6 mb-3">
-      <div class="card" style="background-color: #F5F5F5;">
-        <div class="card-body">
-          <h5 class="card-title" style="color: #28a745;">Variation</h5>
-          <p class="card-text">Conversion Rate: {{ variation_conversion_rate }}%</p>
         </div>
       </div>
     </div>
 
     <div class="col-sm-6 mb-3">
-      <div class="card" style="background-color: {{ relative_improvement_color }};">
+      <div class="card" style="background-color: #F5F5F5;">
         <div class="card-body">
-          <h5 class="card-title">Relative Improvement</h5>
-          <p class="card-text">{{ relative_improvement }}%</p>
+          <h5 class="card-title" style="color: #1e96eb;">Variation</h5>
+          <p class="card-text">Conversion Rate: {{ variation_conversion_rate }}%</p>
         </div>
       </div>
     </div>
+
+   <div class="col-sm-6">
+      <div class="card {% if relative_improvement > 0 %}bg-success{% else %}bg-danger{% endif %}">
+        <div class="card-header" style="color: #fafafa;">Relative Improvement</div>
+        <div class="card-body">
+          <h5 class="card-title"style="color: #fafafa;">{{ relative_improvement }}%</h5>
+        </div>
+      </div>
+    </div>
+
 
     <div class="col-sm-6 mb-3">
       <div class="card" style="background-color: #F5F5F5;">
@@ -126,6 +127,7 @@
 {% endif %}
 
 
+
 <script>
   var conversionChart = new Chart(document.getElementById('conversion-chart'), {
     type: 'polarArea',
@@ -134,7 +136,7 @@
       datasets: [
         {
           label: 'Conversion Rate',
-          backgroundColor: ['#007bff', '#28a745'],
+          backgroundColor: ['#00305e', '#1e96eb'],
           data: [{{ control_conversion_rate }}, {{ variation_conversion_rate }}]
         }
       ]

@@ -71,38 +71,38 @@
 <div id="results" class="mt-5">
   <div class="row">
     <div class="col-sm-6 mb-3">
-      <div class="card" style="background-color: #F5F5F5;">
+      <div class="card shadow-sm" style="background-color: #ffff;">
         <div class="card-body">
-          <h5 class="card-title" style="color: #00305e;">Control</h5>
-          <p class="card-text">Conversion Rate: {{ control_conversion_rate }}%</p>
+          <h5 class="card-title mb-3" style="color: #00305e;">Control Conversion Rate</h5>
+          <h2 class="card-text">{{ control_conversion_rate }}%</h2>
         </div>
       </div>
     </div>
 
     <div class="col-sm-6 mb-3">
-      <div class="card" style="background-color: #F5F5F5;">
+      <div class="card shadow-sm" style="background-color: #ffff;">
         <div class="card-body">
-          <h5 class="card-title" style="color: #1e96eb;">Variation</h5>
-          <p class="card-text">Conversion Rate: {{ variation_conversion_rate }}%</p>
+          <h5 class="card-title mb-3" style="color: #1e96eb;">Variation Conversion Rate</h5>
+          <h2 class="card-text">{{ variation_conversion_rate }}%</h2>
         </div>
       </div>
     </div>
 
    <div class="col-sm-6">
-      <div class="card {% if relative_improvement > 0 %}bg-success{% else %}bg-danger{% endif %}">
+      <div class="card {% if relative_improvement > 0 %}bg-success{% else %}bg-danger{% endif %} shadow-sm">
         <div class="card-header" style="color: #495057;">Relative Improvement</div>
         <div class="card-body">
-          <h5 class="card-title"style="color: #fafafa;">{{ relative_improvement }}%</h5>
+          <h2 class="card-title"style="color: #fafafa;">{{ relative_improvement }}%</h2>
         </div>
       </div>
     </div>
 
 
     <div class="col-sm-6 mb-3">
-      <div class="card" style="background-color: #F5F5F5;">
+      <div class="card shadow-sm" style="background-color: #F5F5F5;">
         <div class="card-body">
-          <h5 class="card-title">Statistical Significance</h5>
-          <p class="card-text">{{ significance_level }}%</p>
+          <h5 class="card-title mb-3">Statistical Significance</h5>
+          <h2 class="card-text">{{ significance_level }}%</h2>
         </div>
       </div>
     </div>
@@ -113,7 +113,7 @@
       <canvas id="conversion-chart"></canvas>
     </div>
     <div class="col-sm-6">
-      <h2>Explanation</h2>
+      <h2 class="mb-3">Explanation</h2>
       <p id="explanation-text"></p>
       {% if openai_explanation is defined %}
       <script>

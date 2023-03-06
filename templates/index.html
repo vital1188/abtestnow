@@ -22,7 +22,7 @@
           In an A/B test, the control group is compared against the variation group to determine which one leads to a higher conversion rate. The winner is typically determined based on statistical significance, which measures the likelihood that the difference in conversion rates between the two groups is not due to chance.
         </p>
         <hr>
-      <form method="POST" action="/" class="row">
+  <form method="POST" action="/" class="row">
   <div class="col-sm-6">
     <div class="form-group">
       <label for="control-visitors">Control Visitors:</label>
@@ -83,7 +83,7 @@
 
    <div class="col-sm-6">
       <div class="card {% if relative_improvement > 0 %}bg-success{% else %}bg-danger{% endif %}">
-        <div class="card-header" style="color: #fafafa;">Relative Improvement</div>
+        <div class="card-header" style="color: #495057;">Relative Improvement</div>
         <div class="card-body">
           <h5 class="card-title"style="color: #fafafa;">{{ relative_improvement }}%</h5>
         </div>

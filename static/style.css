@@ -1,18 +1,9 @@
+/* Add this to your existing style.css file */
 
-.progress {
-    margin-top: 1rem;
-}
-
-.progress-bar {
-    font-size: 0.8rem;
-    font-weight: bold;
-}
-
-
-h1 {
-    font-size: 2rem;
-    text-align: center;
-    margin: 20px 0 20px 0;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
 }
 
 #loading {
@@ -20,16 +11,115 @@ h1 {
     justify-content: center;
     align-items: center;
     height: 6vh;
-    
+
 }
 
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+}
+
+h1 {
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.alert-info {
+    background-color: #f8f9fa;
+    border-color: #c8ced3;
+    color: #495057;
+}
+
+.alert-info h4 {
+    font-weight: 700;
+}
 
 .card {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.card-header {
     background-color: #f8f9fa;
+    border-bottom: 1px solid #c8ced3;
+    font-weight: 700;
+    color: #333;
 }
 
-.card[style*="--relative-improvement-color"] {
-    background-color: var(--relative-improvement-color) !important;
+.card-body {
+    padding: 20px;
 }
 
+.card-primary {
+    border-color: #007bff;
+}
+
+.card-primary .card-header {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.card-success {
+    border-color: #28a745;
+}
+
+.card-success .card-header {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.relative-improvement {
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.relative-improvement.high {
+    color: #28a745;
+}
+
+.relative-improvement.medium {
+    color: #ffc107;
+}
+
+.relative-improvement.low {
+    color: #dc3545;
+}
+
+.significance-level {
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.significance-level.high {
+    color: #28a745;
+}
+
+.significance-level.medium {
+    color: #ffc107;
+}
+
+.significance-level.low {
+    color: #dc3545;
+}

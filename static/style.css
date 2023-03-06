@@ -8,6 +8,7 @@
     font-weight: bold;
 }
 
+
 h1 {
     font-size: 2rem;
     text-align: center;
@@ -22,3 +23,12 @@ h1 {
     
 }
 
+
+
+.card {
+    background-color: #f8f9fa;
+}
+
+.card[style*="--relative-improvement-color"] {
+    background-color: var(--relative-improvement-color) !important;
+}

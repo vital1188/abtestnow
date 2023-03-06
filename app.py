@@ -65,7 +65,7 @@ def calculate():
                                variation_conversion_rate=variation_conversion_rate,
                                relative_improvement=relative_improvement,
                                significance_level=round(
-                                   significance_level * 100, 2),
+                               significance_level * 100, 2),
                                control_visitors_input=control_visitors,
                                control_conversions_input=control_conversions,
                                variation_visitors_input=variation_visitors,

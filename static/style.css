@@ -123,3 +123,16 @@ h1 {
 .significance-level.low {
     color: #dc3545;
 }
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.logo-container img {
+    max-width: 100px;
+    height: auto;
+}

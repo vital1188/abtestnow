@@ -32,7 +32,7 @@
   <div class="col-sm-6">
     <div class="form-group">
       <label for="control-visitors">Control Visitors:</label>
-      <input type="number" name="control-visitors" id="control-visitors" class="form-control" required value="{{ control_visitors_input }}">
+      <input type="number" name="control-visitors" id="control-visitors" class="form-control" required value="{{ control_visitors_input }}" max="100000000">
     </div>
 
     <div class="form-group">
@@ -186,13 +186,24 @@
   });
 </script>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-  $(document).ready(function() {
-    $('#submit-btn').click(function() {
-      $('#loading').show(); // show the loading element
-    });
+$(document).ready(function() {
+  $('#submit-btn').click(function() {
+    var controlVisitors = parseInt($('#control-visitors').val());
+    var controlConversions = parseInt($('#control-conversions').val());
+    var variationVisitors = parseInt($('#variation-visitors').val());
+    var variationConversions = parseInt($('#variation-conversions').val());
+
+    if (isNaN(controlVisitors) || isNaN(controlConversions) || isNaN(variationVisitors) || isNaN(variationConversions)) {
+      alert('Please enter valid input values.');
+    } else if (controlVisitors > 100000000 || controlConversions > 100000000 || variationVisitors > 100000000 || variationConversions > 100000000) {
+      alert('Please enter input values less than or equal to 100,000,000.');
+    } else {
+      $('#loading').show();
+    }
   });
+});
 </script>
 
 </body>
